@@ -1,0 +1,337 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg0:#0a0e1a;--bg1:#0f1526;--bg2:#161d35;--bg3:#1e2744;
+  --acc:#f5a623;--acc2:#4f8ef7;--suc:#22d3a0;--dan:#f87171;
+  --br:rgba(255,255,255,0.07);
+  --t1:#e2e8f0;--t2:#94a3b8;--t3:#64748b;
+  --fh:'Space Grotesk',sans-serif;
+}
+body{background:var(--bg0);color:var(--t1);font-family:'DM Sans',sans-serif;font-size:13px}
+.wrap{display:flex;flex-direction:column;min-height:600px;border-radius:12px;overflow:hidden;border:1px solid var(--br)}
+.topbar{background:var(--bg1);border-bottom:1px solid var(--br);padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--fh);font-weight:700;font-size:15px;color:var(--t1)}
+.logo-ico{width:28px;height:28px;background:linear-gradient(135deg,#f5a623,#e08010);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.pill{display:flex;align-items:center;gap:5px;background:rgba(34,211,160,.1);border:1px solid rgba(34,211,160,.25);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--suc);font-weight:500}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--suc);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.body{display:flex;flex:1}
+.sidebar{width:190px;background:var(--bg1);border-right:1px solid var(--br);padding:14px 0;display:flex;flex-direction:column;flex-shrink:0}
+.nav{display:flex;align-items:center;gap:8px;padding:9px 16px;font-size:12.5px;color:var(--t2);cursor:pointer;border-left:3px solid transparent;transition:all .15s}
+.nav:hover{background:var(--bg2);color:var(--t1)}
+.nav.on{background:rgba(245,166,35,.08);color:var(--acc);border-left-color:var(--acc)}
+.main{flex:1;padding:20px;overflow:auto;background:var(--bg0);display:flex;flex-direction:column;gap:16px}
+.sec-title{font-family:var(--fh);font-size:18px;font-weight:600;color:var(--t1);letter-spacing:-.3px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sc{background:var(--bg1);border:1px solid var(--br);border-radius:10px;padding:14px 16px}
+.sl{font-size:10.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px}
+.sv{font-family:var(--fh);font-size:26px;font-weight:700;line-height:1}
+.ss{font-size:11px;color:var(--t3);margin-top:3px}
+.ca{color:var(--acc)}.cs{color:var(--suc)}.cb{color:var(--acc2)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:var(--bg1);border:1px solid var(--br);border-radius:12px;padding:18px}
+.ct{font-family:var(--fh);font-size:13px;font-weight:600;color:var(--t1);margin-bottom:14px;display:flex;align-items:center;gap:7px}
+.fl{font-size:13px}
+.cl{display:flex;flex-direction:column;gap:8px}
+.ci{background:var(--bg2);border:1px solid var(--br);border-radius:9px;padding:10px 13px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .15s}
+.ci:hover{border-color:rgba(255,255,255,.13);background:var(--bg3)}
+.av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.ai-{background:rgba(79,142,247,.15);color:var(--acc2)}
+.ao-{background:rgba(245,166,35,.15);color:var(--acc)}
+.cin{flex:1;min-width:0}
+.cf{font-size:12.5px;font-weight:500;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ct2{font-size:11px;color:var(--t3);margin-top:1px}
+.badge{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:600;flex-shrink:0}
+.ba{background:rgba(34,211,160,.1);color:var(--suc);border:1px solid rgba(34,211,160,.2)}
+.bc{background:var(--bg3);color:var(--t3)}
+.bi{background:rgba(79,142,247,.1);color:var(--acc2)}
+.fg{margin-bottom:12px}
+.fl2{font-size:11.5px;color:var(--t2);margin-bottom:5px;display:block;font-weight:500}
+.fi{width:100%;background:var(--bg2);border:1px solid var(--br);border-radius:7px;padding:9px 11px;color:var(--t1);font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
+.fi:focus{border-color:rgba(245,166,35,.35)}
+.ta{width:100%;background:var(--bg2);border:1px solid var(--br);border-radius:7px;padding:9px 11px;color:var(--t1);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;resize:none;min-height:68px}
+.btn{width:100%;padding:10px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;background:var(--acc);color:#0a0e1a;transition:all .15s}
+.btn:hover{background:#e0950f}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.info-box{background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.14);border-radius:7px;padding:9px 12px;font-size:11.5px;color:var(--t2);line-height:1.6;margin-bottom:12px}
+.step{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.snum{width:22px;height:22px;background:var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0a0e1a;flex-shrink:0;margin-top:1px}
+.stitle{font-size:12.5px;font-weight:500;color:var(--t1);margin-bottom:3px}
+.scmd{font-family:monospace;font-size:11.5px;background:var(--bg2);padding:4px 8px;border-radius:5px;color:var(--suc)}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:99;padding:20px}
+.modal{background:var(--bg1);border:1px solid var(--br);border-radius:14px;width:480px;max-height:70vh;display:flex;flex-direction:column;overflow:hidden}
+.mh{padding:16px 18px 14px;border-bottom:1px solid var(--br);display:flex;align-items:center;justify-content:space-between}
+.mt{font-family:var(--fh);font-size:14.5px;font-weight:600}
+.ms{font-size:11px;color:var(--t3);margin-top:2px}
+.mx{width:26px;height:26px;border-radius:5px;background:var(--bg2);border:1px solid var(--br);color:var(--t2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px}
+.tb{flex:1;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.msg{display:flex;flex-direction:column;max-width:82%}
+.msg.ai{align-self:flex-start}.msg.usr{align-self:flex-end}
+.mlbl{font-size:10px;color:var(--t3);margin-bottom:3px;font-weight:500}
+.msg.usr .mlbl{text-align:right}
+.mb{border-radius:10px;padding:9px 12px;font-size:12.5px;line-height:1.55}
+.msg.ai .mb{background:var(--bg2);border-radius:3px 10px 10px 10px}
+.msg.usr .mb{background:rgba(245,166,35,.12);color:#f5c97a;border:1px solid rgba(245,166,35,.18);border-radius:10px 3px 10px 10px}
+.tab-row{display:flex;gap:0;border-bottom:1px solid var(--br);margin-bottom:16px}
+.tab{padding:8px 16px;font-size:12.5px;cursor:pointer;color:var(--t3);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
+.tab:hover{color:var(--t1)}
+.tab.on{color:var(--acc);border-bottom-color:var(--acc)}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--bg2);border:1px solid var(--br);border-radius:9px;padding:12px 16px;font-size:12.5px;color:var(--t1);z-index:200;animation:slideUp .2s ease;max-width:280px}
+@keyframes slideUp{from{transform:translateY(8px);opacity:0}to{transform:translateY(0);opacity:1}}
+.toast.suc{border-color:rgba(34,211,160,.3)}.toast.err{border-color:rgba(248,113,113,.3)}
+.empty{text-align:center;padding:28px;color:var(--t3);font-size:12px}
+.wh-row{background:var(--bg2);border:1px solid var(--br);border-radius:7px;padding:9px 12px;margin-bottom:8px}
+.wh-lbl{font-size:10.5px;color:var(--t3);margin-bottom:2px}
+.wh-url{font-family:monospace;font-size:11px;color:var(--acc)}
+</style>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-ico">📞</div>
+      College AI Agent
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="pill"><div class="dot"></div>Agent Online</div>
+      <div style="font-size:11px;color:var(--t3)">Claude AI + Twilio</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="sidebar">
+      <div class="nav on" onclick="showTab('dash',this)">⊞&nbsp; Dashboard</div>
+      <div class="nav" onclick="showTab('logs',this)">📋&nbsp; Call Logs</div>
+      <div class="nav" onclick="showTab('call',this)">📤&nbsp; Make a Call</div>
+      <div class="nav" onclick="showTab('setup',this)">⚙&nbsp; Setup Guide</div>
+      <div style="flex:1"></div>
+      <div style="padding:12px 16px;border-top:1px solid var(--br)">
+        <div style="font-size:10.5px;color:var(--t3);line-height:1.7">
+          <div style="color:var(--t2);font-weight:500;margin-bottom:3px">Webhook URLs</div>
+          <div>POST /voice</div>
+          <div>POST /call-status</div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+
+      <!-- DASHBOARD -->
+      <div id="tab-dash">
+        <div class="sec-title">Dashboard</div>
+        <div class="stats">
+          <div class="sc"><div class="sl">Total Calls</div><div class="sv ca">247</div><div class="ss">All time</div></div>
+          <div class="sc"><div class="sl">Active Now</div><div class="sv cs" id="active-ct">2</div><div class="ss">Live calls</div></div>
+          <div class="sc"><div class="sl">Today</div><div class="sv cb">18</div><div class="ss">Calls today</div></div>
+          <div class="sc"><div class="sl">Avg Duration</div><div class="sv">3:05</div><div class="ss">Per call</div></div>
+        </div>
+        <div class="g2">
+          <div class="card">
+            <div class="ct">🔴 Active Calls <span class="badge ba" style="margin-left:auto">2 live</span></div>
+            <div class="cl" id="active-list">
+              <div class="ci" onclick="showModal('CA124','+91 98765 43210','outbound','2 min ago','2:14',[['assistant','Hello! This is an automated call from Our College regarding your fee payment due on May 5th.'],['user','Yes, I need to make the payment. What are the steps?'],['assistant','You can pay online via our portal at college.edu/fees using net banking, UPI, or credit card. The amount due is ₹45,000. Shall I SMS you the payment link?']])">
+                <div class="av ao-">↗</div>
+                <div class="cin"><div class="cf">+91 98765 43210</div><div class="ct2">Outbound · 2 min ago</div></div>
+                <span class="badge ba">Live</span>
+              </div>
+              <div class="ci" onclick="showModal('CA125','+91 12345 67890','inbound','45 sec ago','0:45',[['assistant','Hello! Welcome to Our College. I am your AI assistant. How can I help you today?'],['user','I want to know about hostel facilities'],['assistant','Our hostel accommodates 800 students with AC and non-AC options. Fees range from ₹60,000 to ₹90,000 per year including meals. We have 24/7 security, Wi-Fi, and a common room. Would you like to know about the application process?']])">
+                <div class="av ai-">↙</div>
+                <div class="cin"><div class="cf">+91 12345 67890</div><div class="ct2">Inbound · 45 sec ago</div></div>
+                <span class="badge ba">Live</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ct">📤 Quick Outbound Call</div>
+            <div class="fg"><label class="fl2">Phone Number (with country code)</label><input class="fi" id="q-phone" placeholder="+919876543210"></div>
+            <div class="fg"><label class="fl2">Opening Message</label><textarea class="ta" id="q-msg" placeholder="Hello, this is a call from the college regarding..."></textarea></div>
+            <button class="btn" id="q-btn" onclick="quickCall()">📞 Initiate Call</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ct">🕐 Recent Calls</div>
+          <div class="cl">
+            <div class="ci" onclick="showModal('CA123','+91 78901 23456','inbound','5 min ago','2:22',[['assistant','Hello! Welcome to Our College. How can I help you today?'],['user','I want to know about admission process for B.Tech.'],['assistant','B.Tech admissions are based on JEE Mains scores. The cutoff last year was 85 percentile. You need Class 12 with PCM with minimum 60% marks. Application deadline is June 30th. Would you like to know about fees or course details?'],['user','Tell me about fees'],['assistant','Annual tuition is ₹1.8 lakhs per year. Hostel available at ₹60,000 per annum including meals. We offer merit scholarships — top 10 students get 100% tuition waiver. Shall I share the scholarship criteria?']])">
+              <div class="av ai-">↙</div><div class="cin"><div class="cf">+91 78901 23456</div><div class="ct2">Inbound · 5 min ago · 2:22</div></div>
+              <span class="badge bc">completed</span>
+            </div>
+            <div class="ci" onclick="showModal('CA122','+91 55512 34567','outbound','12 min ago','1:30',[['assistant','Hello! This is a reminder call from Our College. Your exam schedule has been updated. Semester exams begin May 10th. Please check the portal for your timetable.'],['user','Thank you. Can I also know about the exam fee?'],['assistant','Exam fee of ₹500 per semester is already included in your term fee. No separate payment needed. Is there anything else I can help you with?'],['user','No, thank you'],['assistant','You are welcome! Good luck with your exams. Goodbye!']])">
+              <div class="av ao-">↗</div><div class="cin"><div class="cf">+91 55512 34567</div><div class="ct2">Outbound · 12 min ago · 1:30</div></div>
+              <span class="badge bc">completed</span>
+            </div>
+            <div class="ci" onclick="showModal('CA121','+91 99887 76655','inbound','28 min ago','0:18',[['assistant','Hello! Welcome to Our College. How can I help you today?'],['user','What are your office hours?'],['assistant','Our administrative office is open Monday to Saturday, 9 AM to 5 PM. The admissions office has extended hours until 7 PM during application season. Is there anything specific you need help with?']])">
+              <div class="av ai-">↙</div><div class="cin"><div class="cf">+91 99887 76655</div><div class="ct2">Inbound · 28 min ago · 0:18</div></div>
+              <span class="badge bc">completed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGS -->
+      <div id="tab-logs" style="display:none">
+        <div class="sec-title">Call Logs</div>
+        <div class="tab-row">
+          <div class="tab on">All Calls (247)</div>
+          <div class="tab">Inbound (189)</div>
+          <div class="tab">Outbound (58)</div>
+        </div>
+        <div class="card">
+          <div class="cl">
+            <div class="ci" onclick="showModal('CA125','+91 12345 67890','inbound','45 sec ago','0:45',[['assistant','Hello! Welcome to Our College. I am your AI assistant. How can I help you today?'],['user','I want to know about hostel facilities'],['assistant','Our hostel accommodates 800 students with AC and non-AC options. Fees range from ₹60,000 to ₹90,000 per year including meals. We have 24/7 security, Wi-Fi, and a common room. Would you like to know about the application process?']])">
+              <div class="av ai-">↙</div><div class="cin"><div class="cf">+91 12345 67890</div><div class="ct2">Inbound · Just now · 3 messages</div></div>
+              <span class="badge ba">in-progress</span>
+            </div>
+            <div class="ci" onclick="showModal('CA124','+91 98765 43210','outbound','2 min ago','2:14',[['assistant','Hello! This is an automated call from Our College regarding your fee payment due on May 5th.'],['user','Yes, I need to make the payment. What are the steps?'],['assistant','You can pay online via our portal at college.edu/fees using net banking, UPI, or credit card. The amount due is ₹45,000. Shall I SMS you the payment link?']])">
+              <div class="av ao-">↗</div><div class="cin"><div class="cf">+91 98765 43210</div><div class="ct2">Outbound · 2 min ago · 3 messages</div></div>
+              <span class="badge ba">in-progress</span>
+            </div>
+            <div class="ci" onclick="showModal('CA123','+91 78901 23456','inbound','5 min ago','2:22',[['assistant','Hello! Welcome to Our College. How can I help you today?'],['user','I want to know about admission process for B.Tech.'],['assistant','B.Tech admissions are based on JEE Mains scores. The cutoff last year was 85 percentile. You need Class 12 with PCM with minimum 60% marks. Application deadline is June 30th. Would you like to know about fees or course details?'],['user','Tell me about fees'],['assistant','Annual tuition is ₹1.8 lakhs per year. Hostel available at ₹60,000 per annum including meals. We offer merit scholarships — top 10 students get 100% tuition waiver. Shall I share the scholarship criteria?']])">
+              <div class="av ai-">↙</div><div class="cin"><div class="cf">+91 78901 23456</div><div class="ct2">Inbound · 5 min ago · 5 messages · 2:22</div></div>
+              <span class="badge bc">completed</span>
+            </div>
+            <div class="ci" onclick="showModal('CA122','+91 55512 34567','outbound','12 min ago','1:30',[['assistant','Hello! This is a reminder call from Our College. Your exam schedule has been updated. Semester exams begin May 10th.'],['user','Thank you. Can I also know about the exam fee?'],['assistant','Exam fee of ₹500 per semester is already included in your term fee. No separate payment needed. Goodbye!']])">
+              <div class="av ao-">↗</div><div class="cin"><div class="cf">+91 55512 34567</div><div class="ct2">Outbound · 12 min ago · 3 messages · 1:30</div></div>
+              <span class="badge bc">completed</span>
+            </div>
+            <div class="empty">+ 243 more calls in the actual backend</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAKE A CALL -->
+      <div id="tab-call" style="display:none">
+        <div class="sec-title">Make an Outbound Call</div>
+        <div class="card" style="max-width:480px">
+          <div class="ct">📤 Outbound Call Setup</div>
+          <div class="fg"><label class="fl2">Recipient Phone Number</label><input class="fi" id="o-phone" placeholder="+919876543210"></div>
+          <div class="fg"><label class="fl2">Opening Message</label><textarea class="ta" id="o-msg" style="min-height:90px" placeholder="Hello! This is an automated call from Our College. We are calling to inform you about..."></textarea></div>
+          <div class="info-box">💡 After this message, the call switches to <strong style="color:var(--acc2)">AI conversation mode</strong> — the recipient can ask questions and Claude will respond intelligently about admissions, fees, courses, and more.</div>
+          <button class="btn" id="o-btn" onclick="placeCall()">📞 Place Call Now</button>
+        </div>
+      </div>
+
+      <!-- SETUP -->
+      <div id="tab-setup" style="display:none">
+        <div class="sec-title">Setup Guide</div>
+        <div class="g2">
+          <div class="card">
+            <div class="ct">⚙ .env Configuration</div>
+            <div style="font-family:monospace;font-size:11px;background:var(--bg2);border-radius:8px;padding:14px;line-height:1.9;color:var(--t2)">
+              <span style="color:var(--t3)"># Twilio</span><br>
+              TWILIO_ACCOUNT_SID=<span style="color:var(--acc)">ACa9a85...</span><br>
+              TWILIO_AUTH_TOKEN=<span style="color:var(--dan)">⚠ ROTATE THIS</span><br>
+              TWILIO_PHONE_NUMBER=<span style="color:var(--suc)">+1XXXXXXXXXX</span><br><br>
+              <span style="color:var(--t3)"># Claude AI</span><br>
+              ANTHROPIC_API_KEY=<span style="color:var(--acc2)">sk-ant-XXXXXX</span><br><br>
+              <span style="color:var(--t3)"># Server</span><br>
+              BASE_URL=<span style="color:var(--suc)">https://xxx.ngrok.io</span><br>
+              COLLEGE_NAME=<span style="color:var(--t1)">Your College</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ct">🔧 Twilio Webhook URLs</div>
+            <div class="wh-row"><div class="wh-lbl">Incoming Call → HTTP POST</div><div class="wh-url">https://xxx.ngrok.io/voice</div></div>
+            <div class="wh-row"><div class="wh-lbl">Status Callback → HTTP POST</div><div class="wh-url">https://xxx.ngrok.io/call-status</div></div>
+            <div style="font-size:11.5px;color:var(--t3);margin-top:10px;line-height:1.6">Set these in <span style="color:var(--acc2)">Twilio Console → Phone Numbers → Your Number → Voice</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ct">🚀 Quick Start</div>
+          <div class="step"><div class="snum">1</div><div><div class="stitle">Install dependencies</div><div class="scmd">cd ai-call-agent && npm install</div></div></div>
+          <div class="step"><div class="snum">2</div><div><div class="stitle">Set up environment file</div><div class="scmd">cp .env.example .env  # Fill in your keys</div></div></div>
+          <div class="step"><div class="snum">3</div><div><div class="stitle">Start the backend server</div><div class="scmd">npm run dev</div></div></div>
+          <div class="step"><div class="snum">4</div><div><div class="stitle">Expose with ngrok (public URL)</div><div class="scmd">npx ngrok http 3001</div></div></div>
+          <div class="step"><div class="snum">5</div><div><div class="stitle">Paste ngrok URL into Twilio Console</div><div class="scmd">https://YOUR-NGROK.ngrok.io/voice</div></div></div>
+          <div class="step"><div class="snum">6</div><div><div class="stitle">Call your Twilio number — AI answers!</div><div class="scmd">Get Anthropic key: console.anthropic.com</div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-bg" id="modal" style="display:none" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="mh">
+      <div><div class="mt" id="m-title">Call Transcript</div><div class="ms" id="m-sub"></div></div>
+      <div class="mx" onclick="closeModal()">✕</div>
+    </div>
+    <div class="tb" id="m-body"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast suc" id="toast" style="display:none"></div>
+
+<script>
+function showTab(name, el) {
+  document.querySelectorAll('[id^="tab-"]').forEach(t => t.style.display = 'none');
+  document.getElementById('tab-' + name).style.display = 'flex';
+  document.getElementById('tab-' + name).style.flexDirection = 'column';
+  document.getElementById('tab-' + name).style.gap = '16px';
+  document.querySelectorAll('.nav').forEach(n => n.classList.remove('on'));
+  el.classList.add('on');
+}
+document.getElementById('tab-dash').style.display = 'flex';
+document.getElementById('tab-dash').style.flexDirection = 'column';
+document.getElementById('tab-dash').style.gap = '16px';
+
+function showModal(sid, phone, dir, time, dur, transcript) {
+  document.getElementById('m-title').textContent = 'Call Transcript';
+  document.getElementById('m-sub').textContent = phone + ' · ' + dir + ' · ' + time + ' · ' + dur;
+  const body = document.getElementById('m-body');
+  body.innerHTML = transcript.map(m => `
+    <div class="msg ${m[0] === 'user' ? 'usr' : 'ai'}">
+      <div class="mlbl">${m[0] === 'user' ? 'Caller' : 'AI Agent'}</div>
+      <div class="mb">${m[1]}</div>
+    </div>
+  `).join('');
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() { document.getElementById('modal').style.display = 'none'; }
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = (type === 'suc' ? '✓ ' : '✗ ') + msg;
+  t.className = 'toast ' + type;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 3500);
+}
+
+function quickCall() {
+  const ph = document.getElementById('q-phone').value;
+  if (!ph.trim()) { showToast('Enter a phone number', 'err'); return; }
+  const btn = document.getElementById('q-btn');
+  btn.disabled = true; btn.textContent = '⏳ Calling...';
+  fetch('http://localhost:3001/make-call', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ to: ph, message: document.getElementById('q-msg').value })
+  })
+  .then(r => r.json())
+  .then(d => {
+    if (d.success) { showToast('Call initiated! SID: ' + d.callSid.slice(-8), 'suc'); document.getElementById('q-phone').value = ''; }
+    else showToast(d.error || 'Call failed', 'err');
+  })
+  .catch(() => showToast('Backend offline — run: npm run dev', 'err'))
+  .finally(() => { btn.disabled = false; btn.textContent = '📞 Initiate Call'; });
+}
+
+function placeCall() {
+  const ph = document.getElementById('o-phone').value;
+  if (!ph.trim()) { showToast('Enter a phone number', 'err'); return; }
+  const btn = document.getElementById('o-btn');
+  btn.disabled = true; btn.textContent = '⏳ Placing call...';
+  fetch('http://localhost:3001/make-call', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ to: ph, message: document.getElementById('o-msg').value })
+  })
+  .then(r => r.json())
+  .then(d => {
+    if (d.success) { showToast('Call placed! SID: ' + d.callSid.slice(-8), 'suc'); }
+    else showToast(d.error || 'Call failed', 'err');
+  })
+  .catch(() => showToast('Backend offline — run: npm run dev', 'err'))
+  .finally(() => { btn.disabled = false; btn.textContent = '📞 Place Call Now'; });
+}
+</script>
